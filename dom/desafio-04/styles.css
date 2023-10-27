@@ -23,3 +23,18 @@
 	width: 200px;
 	transform: rotate(-10deg);
 }
+
+.classe4 {
+	float: right;
+}
+
+.barra-progresso {
+	height: 30px;
+	width: 350px;
+	border: solid 1px black;
+}
+
+.progresso {
+	background-color: yellowgreen;
+	height: 100%;
+}
