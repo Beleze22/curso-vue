@@ -1,0 +1,46 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue@2"></script>
+
+<div id="app">
+  <ul>
+    <!-- "cor" nome da variável criada. 'cores' nome do atributo em data -->
+    <li v-for="(cor, index) in cores" :teste="cor">{{ index+1 }}) {{ cor }}</li>
+  </ul>
+  <button @click="cores.push('Nova cor!')">Adicionar</button>
+  <hr>
+  <template v-for="(cor, index) in cores">
+    <h3>{{ cor }}</h3>
+    <p>{{ index }}</p>
+  </template>
+  <div v-for="(cor, index) in cores">
+    <h3>{{ cor }}</h3>
+    <p>{{ index }}</p>
+  </div>
+  <hr>
+  <ul>
+    <li v-for="pessoa in pessoas">
+      <div v-for="(valor, chave, index) in pessoa">{{ chave }}: {{ valor }} ({{index}})</div>
+    </li>
+  </ul>
+  <hr>
+  <span v-for="n in 10">{{ n }}</span>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      cores: ['vermelho', 'amarelo', 'verde', 'azul', 'roxo'],
+      pessoas: [
+        {nome: 'Claudia', idade: 28, peso: 62},
+        {nome: 'Gustavo', idade: 29, peso: 82},
+      ]
+    }
+  })
+</script>
+
+<style>
+  h3, p {
+    display: inline;
+  }
+</style>
