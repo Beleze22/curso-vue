@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/vue@2"></script>
+<div id="app">
+  <div id="display" class="container">
+    <div id="jogador">
+      <h1 class="identificador">Jogador</h1>
+      <div class="barra-progresso">
+        <div class="progresso"></div>
+      </div>
+      <span class="vida">50%</span>
+    </div>
+    <div id="monstro">
+      <h1 class="identificador">Monstro</h1>
+      <div class="barra-progresso">
+        <div class="progresso"></div>
+      </div>
+      <span class="vida">50%</span>
+    </div>
+  </div>
+  <div id="botoes" class="container">
+    <template v-if="jogoAtivo">
+      <button>Ataque</button>
+      <button>Ataque Especial</button>
+      <button>Curar</button>
+      <button @click="jogoAtivo = false">Desistir</button>
+    </template>
+    <template v-else>
+      <button @click="jogoAtivo = true">Novo Jogo</button>
+    </template>
+  </div>
+  <div id="log" class="container">
+    <ul class="lista-log">
+      <li class="item-lista">Texto jogador</li>
+      <li class="item-lista">Texto monstro</li>
+    </ul>
+    <ul class="lista-log">
+      <li class="item-lista">Texto jogador</li>
+      <li class="item-lista">Texto monstro</li>
+    </ul>
+  </div>
+  <script src="app.js"></script>
+</div>
