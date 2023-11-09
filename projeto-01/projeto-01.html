@@ -1,42 +1,51 @@
-<link rel="stylesheet" href="style.css">
-<script src="https://unpkg.com/vue@2"></script>
-<div id="app">
-  <div id="display" class="container">
-    <div id="jogador">
-      <h1 class="identificador">Jogador</h1>
-      <div class="barra-progresso">
-        <div class="progresso"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matador de Monstro</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/vue@2"></script>
+</head>
+<body>
+  
+  <div id="app">
+    <div id="display" class="container">
+      <div id="jogador" :class="setBackGroundJogador">
+        <h1 class="identificador">Jogador</h1>
+        <div class="barra-progresso">
+          <div class="progresso" :class="aplicarProgressoJogador" :style="[{width: `${vidaJogador}%`}]"></div>
+        </div>
+        <span class="vida">{{ vidaJogador }} %</span>
       </div>
-      <span class="vida">50%</span>
-    </div>
-    <div id="monstro">
-      <h1 class="identificador">Monstro</h1>
-      <div class="barra-progresso">
-        <div class="progresso"></div>
+      <div id="monstro" :class="setBackGroundMonstro">
+        <h1 class="identificador">Monstro</h1>
+        <div class="barra-progresso">
+          <div class="progresso" :class="aplicarProgressoMonstro" :style="[{width: `${vidaMonstro}%`}]"></div>
+        </div>
+        <span class="vida">{{ vidaMonstro }} %</span>
       </div>
-      <span class="vida">50%</span>
     </div>
-  </div>
-  <div id="botoes" class="container">
-    <template v-if="jogoAtivo">
-      <button>Ataque</button>
-      <button>Ataque Especial</button>
-      <button>Curar</button>
-      <button @click="jogoAtivo = false">Desistir</button>
-    </template>
-    <template v-else>
-      <button @click="jogoAtivo = true">Novo Jogo</button>
-    </template>
-  </div>
-  <div id="log" class="container">
-    <ul class="lista-log">
-      <li class="item-lista">Texto jogador</li>
-      <li class="item-lista">Texto monstro</li>
-    </ul>
-    <ul class="lista-log">
-      <li class="item-lista">Texto jogador</li>
-      <li class="item-lista">Texto monstro</li>
-    </ul>
+    <div id="botoes" class="container">
+      <template v-if="jogoAtivo">
+        <button @click="ataque">Ataque</button>
+        <button @click="ataqueEspecial">Ataque Especial</button>
+        <button @click="curar">Curar</button>
+        <button @click="jogoAtivo = false">Desistir</button>
+      </template>
+      <template v-else>
+        <button @click="novoJogo">Novo Jogo</button>
+      </template>
+    </div>
+    <div id="log" class="container" v-show="logJogador.length > 0">
+      <ul class="lista-log">
+        <li class="item-lista" v-for="(diff, index) in logJogador">{{ index + 1 }} - Jogador levou {{ diff }} de dano</li>
+      </ul>
+      <ul class="lista-log">
+        <li class="item-lista" v-for="(diff, index) in logMonstro">{{ index + 1 }} - Monstro levou {{ diff }} de dano</li>
+      </ul>
+    </div>
   </div>
   <script src="app.js"></script>
-</div>
+</body>
+</html>
