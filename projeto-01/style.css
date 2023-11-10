@@ -52,6 +52,23 @@
   font-weight: bold;
 }
 
+#resultado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+#resultado .win {
+  color: green;
+}
+
+#resultado .lose {
+  color: red;
+}
+
+
 #botoes {
   justify-content: center;
   gap: 2rem;

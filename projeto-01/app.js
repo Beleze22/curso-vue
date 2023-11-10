@@ -99,6 +99,9 @@ new Vue({
         backVermelho: this.vidaMonstro == 0,
       }
     },
+    acabou() {
+      return this.vidaJogador == 0 || this.vidaMonstro == 0
+    },
   },
   watch: {
     vidaJogador(novo, antigo) {
@@ -107,11 +110,6 @@ new Vue({
       }
       diff = antigo - novo
       this.logJogador.push(diff)
-      if (novo == 0) {
-        setTimeout(() => {
-          alert('Jogador morreu!')
-        }, 200);
-      }
     },
     vidaMonstro(novo, antigo) {
       if (novo == 100) {
@@ -119,11 +117,6 @@ new Vue({
       }
       diff = antigo - novo
       this.logMonstro.push(diff)
-      if (novo == 0) {
-        setTimeout(() => {
-          alert('Monstro morreu!')
-        }, 200);
-      }
     }
   }
 })

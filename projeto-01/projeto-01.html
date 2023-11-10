@@ -26,6 +26,10 @@
         <span class="vida">{{ vidaMonstro }} %</span>
       </div>
     </div>
+    <div v-if="acabou" id="resultado" class="container">
+      <div v-if="vidaMonstro == 0" class="win">Você ganhou!!!</div>
+      <div v-else class="lose">Você perdeu!!</div>
+    </div>
     <div id="botoes" class="container">
       <template v-if="jogoAtivo">
         <button @click="ataque">Ataque</button>
