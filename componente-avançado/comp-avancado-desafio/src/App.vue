@@ -6,10 +6,10 @@
 			<button @click="selecionarCaixa($event)" class="azul" id="azul">Carregar Componente Azul</button>
 		</span>
 		
-		<component :is="componente" :cor="componente"></component>
-		<!-- <Vermelho />
-		<Verde />
-		<Azul /> -->
+		<component :is="componente">
+      <span>Conteúdo do componente <strong>{{ componente }}</strong></span>
+    </component>
+
 	</div>
 </template>
 
@@ -28,7 +28,6 @@ export default {
   },
   methods: {
     selecionarCaixa(event) {
-      console.log(event.target.id);
       this.componente = event.target.id;
     },
   },
